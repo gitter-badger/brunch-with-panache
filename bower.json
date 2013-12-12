@@ -13,7 +13,8 @@
     "chai": "~1.8.1",
     "mocha": "~1.14.0",
     "sinon": "http://sinonjs.org/releases/sinon-1.7.3.js",
-    "sinon-chai": "~2.4.0"
+    "sinon-chai": "~2.4.0",
+    "static": "git@github.com:trunkclub/static.git#1.15.14"
   },
   "overrides": {
     "backbone": {
