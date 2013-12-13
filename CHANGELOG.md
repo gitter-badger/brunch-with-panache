@@ -1,6 +1,9 @@
 # Changelog
 
 ### WIP
+-
+
+### 0.7.7 (December 3, 2013)
 - Adding postfix "-test" to generaters which produce code tests
 - Updated collection generator
 - Revised contribution instructions
