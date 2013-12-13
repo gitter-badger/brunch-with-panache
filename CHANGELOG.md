@@ -2,8 +2,6 @@
 
 ### WIP
 - Adding postfix "-test" to generaters which produce code tests
-
-### 0.7.7 (December 12, 2013)
 - Updated collection generator
 - Revised contribution instructions
 
