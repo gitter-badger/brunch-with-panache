@@ -1,9 +1,9 @@
 # Changelog
 
-### WIP
--
+### 0.7.8 (December 12, 2013)
+- Bump for formal deployment and tagging process
 
-### 0.7.7 (December 3, 2013)
+### 0.7.7 (December 12, 2013)
 - Adding postfix "-test" to generaters which produce code tests
 - Updated collection generator
 - Revised contribution instructions
