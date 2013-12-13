@@ -1,2 +1,4 @@
 module.exports = (match) ->
-  match '', 'home#index'
+  match '', 'collections#index'
+
+  match 'collection/:id', 'collections#show', constraints: {id: /^\d+$/}
