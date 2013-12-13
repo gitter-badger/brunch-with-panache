@@ -68,6 +68,11 @@ If you want to just run Brunch without using Jake tasks, just use either `web:de
 
 One-line commands are provided for convenience as well for those that want to start running things as quickly as possible by installing depedencies automatically. Use `npm start` to download non-development packages and run the `server:prod` task. Use `npm test` to download all packages and run the `test:all` task.
 
+## Contribution
+
+When making a pull request, make sure to edit the base fork to which you want to contribute (by default it will try and merge with the parent repository from which this one is forked, which we don't want to do).
+
+![Example: Pull Request](http://cl.ly/image/3Y0E00370S0e/Screen%20Shot%202013-12-13%20at%203.12.27%20PM.png)
 
 ## Task List
 While Brunch/Scaffolt/etc. can be used, Jake commands are provided for a simple and consistent interface. These tasks can be executed using `jake`. (`jake [task]`) These are the following available tasks provided out of the box:
