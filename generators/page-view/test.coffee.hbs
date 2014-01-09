@@ -1,0 +1,11 @@
+{{#camelize}}{{name}}{{/camelize}}PageView = require('views/{{name}}/{{name}}-page-view')
+
+describe '{{#camelize}}{{name}}{{/camelize}}PageView', ->
+
+  beforeEach ->
+    @{{#lowercamelize}}{{name}}{{/lowercamelize}}PageView = new {{#camelize}}{{name}}{{/camelize}}PageView
+
+
+
+  afterEach ->
+    @{{#lowercamelize}}{{name}}{{/lowercamelize}}PageView.dispose()

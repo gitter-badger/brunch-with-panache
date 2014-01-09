@@ -1,5 +1,8 @@
 # Changelog
 
+## WIP
+- Added new generators for designer scaffolding and page views
+
 ### 0.7.8 (December 12, 2013)
 - Bump for formal deployment and tagging process
 

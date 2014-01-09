@@ -1,4 +1,5 @@
 {
+  "name": "view",
   "description": "Chaplin view and unit test",
   "files": [
     {

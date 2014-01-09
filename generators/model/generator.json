@@ -1,5 +1,6 @@
 {
-  "description": "Chaplin view and unit test",
+  "name": "model",
+  "description": "Chaplin model and unit test",
   "files": [
     {
       "from": "model.coffee.hbs",

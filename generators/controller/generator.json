@@ -1,4 +1,5 @@
 {
+  "name": "controller",
   "description": "Chaplin controller and unit test",
   "files": [
     {

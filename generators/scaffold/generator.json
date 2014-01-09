@@ -1,0 +1,21 @@
+{
+  "name": "scaffold",
+  "description": "Chaplin Collection View, Controller, Actions and Routes",
+  "files": [
+    {
+      "from": "controller.coffee.hbs",
+      "to": "app/controllers/{{name}}-controller.coffee"
+    },
+    {
+      "from": "route.coffee.hbs",
+      "to": "app/routes.coffee",
+      "method": "append"
+    }
+  ],
+  "dependencies": [
+    {"type": "model"},
+    {"type": "collection"},
+    {"type": "page-view", "name": "{{name}}"},
+    {"type": "collection-view", "name": "{{pluralName}}"}
+  ]
+}

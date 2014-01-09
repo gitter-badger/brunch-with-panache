@@ -1,5 +1,6 @@
 {
-  "description": "test file for site testing",
+  "name": "site-test",
+  "description": "Test file for site testing",
   "files": [
     {
       "from": "test.coffee.hbs",
