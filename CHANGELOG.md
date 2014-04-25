@@ -2,8 +2,6 @@
 
 ## WIP
 - Added new generators for designer scaffolding and page views
-
-### 0.7.9 (April 25, 2014)
 - Removed npm-shrinkwrap from the repo
 - Added ability to look for Scaffolt generators that are imported as npm modules
 - Added jsenv-brunch to allow for environment-specific variables in production code
