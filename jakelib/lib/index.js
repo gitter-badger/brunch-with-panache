@@ -54,7 +54,7 @@ exports.execute = function(command, options) {
 };
 
 /**
- * Modified by Jason Block, <jblock@trunkclub.com>
+ * Last modified: 4/15/14
  *
  * List of available generators from Scaffolt. Searches through different
  * directories in the project folder. Each element has the following
