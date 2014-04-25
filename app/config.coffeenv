@@ -4,6 +4,6 @@
   # Add environment-specific variables here
   #
   # ex: if (env.ENVIRONMENT == 'STAGING')
-  #       data.api_url = 'https://staging.facebook.com'
+  #       data.api_url = 'https://staging.trunkclub.com'
 
   data

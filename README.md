@@ -87,20 +87,20 @@ A config.coffeenev file is provided in the `app` directory. It allows you to set
 
     # Add environment-specific variables here
     if (env.ENVIRONMENT == 'STAGING')
-      data.api_url = 'https://staging.facebook.com'
-
+      data.api_url = 'https://staging.trunkclub.com'
+    data.ENERGYLEVELS = env.ENERGYLEVELS
     data
 ```
 
 This allows you to run a command with the environment variable:
 
-`ENVIRONMENT="STAGING" jake watch:dev`
+`ENVIRONMENT="STAGING" ENERGYLEVELS="9000" jake watch:dev`
 
 And access the variables as a commonjs module:
 
 ```CoffeeScript
 config = require('config')
-console.log config.api_url
+console.log config.api_url, config.ENERGYLEVELS
 ```
 
 ### Bower
