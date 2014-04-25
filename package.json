@@ -24,7 +24,8 @@
     "handlebars-brunch": ">= 1.0 < 1.8",
     "clean-css-brunch": ">= 1.0 < 1.8",
     "uglify-js-brunch": ">= 1.0 < 1.8",
-    "auto-reload-brunch": ">= 1.0 < 1.8"
+    "auto-reload-brunch": ">= 1.0 < 1.8",
+    "jsenv-brunch": "~1.4.2"
   },
 
   "devDependencies": {

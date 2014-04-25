@@ -54,7 +54,8 @@ exports.execute = function(command, options) {
 };
 
 /**
- * List of available generators from Scaffolt. Each element has the following
+ * List of available generators from Scaffolt. Searches through different
+ * directories in the project folder. Each element has the following
  * properties:
  *   name         Generator name that is to be passed to Scaffolt
  *   task         Same as name, but its name is formatted to be friendly with
@@ -64,20 +65,30 @@ exports.execute = function(command, options) {
  *   isModule     If true, then when generating the scaffold the name parameter
  *                is ignored. Otherwise, the name parameter is used for
  *                scaffolding.
+ * @param  {String} location The root directory to search for generators within
+ * @return {Array}           An array of Scaffolt objects
+ */
+var getGenerators = function(location) {
+  return fs.readdirSync(location).filter(function(generator) {
+    return fs.existsSync(path.resolve(location, generator, 'generator.json'));
+  })
+  .map(function(generator) {
+    var json = jsonfile.readFileSync(path.resolve(location, generator, 'generator.json'));
+    return {
+      task: generator.dasherize().replace(/-/g, ''),
+      name: generator,
+      description: json.description || generator.spacify(),
+      isModule: !!json.isModule
+    }
+  });
+}
+
+/**
+ * Return an array of all possible scaffolt generators available for a particualr
+ * project. Looks in the generators and node_modules directory
  * @type {Array}
  */
-exports.generators = fs.readdirSync('generators').filter(function(generator) {
-  return fs.existsSync(path.resolve('generators', generator, 'generator.json'));
-})
-.map(function(generator) {
-  var json = jsonfile.readFileSync(path.resolve('generators', generator, 'generator.json'));
-  return {
-    task: generator.dasherize().replace(/-/g, ''),
-    name: generator,
-    description: json.description || generator.spacify(),
-    isModule: !!json.isModule
-  }
-});
+exports.generators = getGenerators('generators').concat(getGenerators('node_modules'));
 
 /**
  * Return the absolute path for the binary of a locally installed node package.

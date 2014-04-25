@@ -29,6 +29,7 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
     │   ├── views                 # Chaplin views and collection views
     │   ├── application.coffee    # Chaplin application definition
     │   ├── initialize.coffee     # Chaplin views and collection views
+    |   ├── config.coffeeenv      # Environment-specific variables
     │   └── routes.coffee         # Route definitions for Chaplin
     ├── bower_components          # Packages installed by Bower
     ├── generators                # Generators used by Scaffolt
@@ -77,6 +78,30 @@ When making a pull request, make sure to edit the base fork to which you want to
 ## Task List
 While Brunch/Scaffolt/etc. can be used, Jake commands are provided for a simple and consistent interface. These tasks can be executed using `jake`. (`jake [task]`) These are the following available tasks provided out of the box:
 
+### Coffeeenv
+A config.coffeenev file is provided in the `app` directory. It allows you to set environment variables for the purposes of local development or deployment.
+
+```CoffeeScript
+  (env) ->
+    data = {}
+
+    # Add environment-specific variables here
+    if (env.ENVIRONMENT == 'STAGING')
+      data.api_url = 'https://staging.trunkclub.com'
+    data.ENERGYLEVELS = env.ENERGYLEVELS
+    data
+```
+
+This allows you to run a command with the environment variable:
+
+`ENVIRONMENT="STAGING" ENERGYLEVELS="9000" jake watch:dev`
+
+And access the variables as a commonjs module:
+
+```CoffeeScript
+config = require('config')
+console.log config.api_url, config.ENERGYLEVELS
+```
 
 ### Bower
 
