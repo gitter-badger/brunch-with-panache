@@ -84,11 +84,43 @@ var getGenerators = function(location) {
 }
 
 /**
+ * List of available generators installed as NPM modules.
+ * Searches through the node_modules directory for properly
+ * structured Scafolt generators
+ *
+ * properties:
+ *   name         Generator name that is to be passed to Scaffolt
+ *   task         Same as name, but its name is formatted to be friendly with
+ *                Jake task names
+ *   description  Description of generator. If one is not defined in Scaffolt,
+ *                then make an educated guess with the name.
+ *   isModule     If true, then when generating the scaffold the name parameter
+ *                is ignored. Otherwise, the name parameter is used for
+ *                scaffolding.
+ *@return {Array}         An array of Scaffolt objects
+ */
+var getNPMGenerators = function() {
+  return fs.readdirSync('node_modules').filter(function(module) {
+    return module.indexOf('scaffolt-') !== -1;
+  })
+  .map(function(generator) {
+    generatorName = generator.split('scaffolt-')[1]
+    var json = jsonfile.readFileSync(path.resolve('node_modules', generator, 'generators', generatorName,'generator.json'));
+    return {
+      task: generatorName.dasherize().replace(/-/g, ''),
+      name: generatorName,
+      description: json.description || generatorName.spacify(),
+      isModule: !!json.isModule
+    }
+  });
+}
+
+/**
  * Return an array of all possible scaffolt generators available for a particualr
  * project. Looks in the generators and node_modules directory
  * @type {Array}
  */
-exports.generators = getGenerators('generators').concat(getGenerators('node_modules'));
+exports.generators = getGenerators('generators').concat(getNPMGenerators());
 
 /**
  * Return the absolute path for the binary of a locally installed node package.

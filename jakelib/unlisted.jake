@@ -1,5 +1,7 @@
 // These are tasks that are undocumented, as they tend to be used by other tasks.
 require('sugar');
+var fs = require('fs');
+var path = require('path');
 var config = require('../brunch-config').config;
 var execute = require('./lib').execute;
 var localBinCommand = require('./lib').localBinCommand;
@@ -26,14 +28,16 @@ namespace('clean', function() {
 namespace('scaffold', function() {
   task('gen', function(type) {
     var name = process.env.name;
+    var generatorPath = (fs.existsSync(path.resolve('node_modules', 'scaffolt-' + type, 'generators', type)) ? ' --generators ' + path.resolve('node_modules', 'scaffolt-' + type, 'generators') : '');
     validateName(name);
-    return execute(localBinCommand('scaffolt', type + ' ' + name));
+    return execute(localBinCommand('scaffolt', type + ' ' + name + generatorPath));
   });
 
   task('del', function(type) {
     var name = process.env.name;
+    var generatorPath = (fs.existsSync(path.resolve('node_modules', 'scaffolt-' + type, 'generators', type)) ? ' --generators ' + path.resolve('node_modules', 'scaffolt-' + type, 'generators') : '');
     validateName(name);
-    return execute(localBinCommand('scaffolt', type + ' ' + name + ' -r'));
+    return execute(localBinCommand('scaffolt', type + ' ' + name + ' -r ' + generatorPath));
   });
 
   task('add', function(type) {
@@ -61,4 +65,11 @@ function validateName(name) {
   if(!name) {
     fail('name parameter is required. ex: jake ... name=[name]');
   }
+}
+
+function isNPMGenerator(type) {
+  fs.readdirSync('node_modules').filter(function(generator) {
+    console.log(generator, path.resolve('node_modules', type));
+    return fs.existsSync(path.resolve('node_modules', type));
+  });
 }
