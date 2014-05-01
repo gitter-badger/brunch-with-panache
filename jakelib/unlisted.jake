@@ -66,10 +66,3 @@ function validateName(name) {
     fail('name parameter is required. ex: jake ... name=[name]');
   }
 }
-
-function isNPMGenerator(type) {
-  fs.readdirSync('node_modules').filter(function(generator) {
-    console.log(generator, path.resolve('node_modules', type));
-    return fs.existsSync(path.resolve('node_modules', type));
-  });
-}
