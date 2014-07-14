@@ -1,14 +1,9 @@
-View = require 'views/base/view'
+View = require('views/base/view')
 
 module.exports = class FooterView extends View
-  template: require './templates/footer'
-  autoRender: true
-  className: 'footer'
-  tagName: 'footer'
-  attributes:
-    'role': 'contentinfo'
+  template: require('./templates/footer')
+  className: 'footer-view'
 
-  render: ->
+  attach: ->
     super
-    @$('[data-name="year"]').html "#{new Date().getFullYear()}"
-    @
+    @$('.js-year').html "#{new Date().getFullYear()}"

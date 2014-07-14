@@ -1,44 +1,64 @@
-// Scaffolt non-module generator tasks
-require('sugar');
+// Scaffolt generator tasks
+var fs = require('fs');
 var generators = require('./lib').generators;
+var path = require('path');
+var scaffolt = require('./lib').npmBin('scaffolt');
 var Promise = require('bluebird');
+var generate = true;
+
+// Aliases for generator tasks
+task('g', ['generate']);
+task('gen', ['generate']);
+task('d', ['destroy']);
+task('del', ['destroy']);
 
 // Iterate over non-module generators for creating tasks that scaffold
-namespace('gen', function() {
-  generators.forEach(function(generator) {
-    if(!generator.isModule) {
-      desc('Generate a(n) ' + generator.description);
-      task(generator.task, function() {
-        validate(generator.name, process.env.name);
-        return new Promise(function(resolve) {
-          jake.Task['scaffold:gen']
-          .addListener('complete', resolve)
-          .invoke(generator.name);
-        });
+desc('Scaffold item(s), or list available scaffolds');
+task('generate', function() {
+  var promises = [];
+
+  // Iterate over all available generators.
+  getGenerators().forEach(function(generator) {
+    var names = process.env[generator];
+    if(names) {
+      names.split(',').forEach(function(name) {
+        promises.push(new Promise(function() {
+          validate(generator, name);
+          if(generate) {
+            return scaffolt.execute(generator, name);
+          }
+          else {
+            return scaffolt.execute(generator, name, '--revert');
+          }
+        }));
       });
     }
   });
+
+  // Check if promises have been made. If not, list available generators.
+  if(promises.length) {
+    return Promise.all(promises);
+  }
+  else {
+    return scaffolt.execute('--list');
+  }
 });
 
 // Iterate over non-module generators for creating tasks that undo a scaffold
-namespace('del', function() {
-  generators.forEach(function(generator) {
-    if(!generator.isModule) {
-      desc('Destroy a generated ' + generator.description);
-      task(generator.task, function() {
-        validate(generator.name, process.env.name);
-        return new Promise(function(resolve) {
-          jake.Task['scaffold:del']
-          .addListener('complete', resolve)
-          .invoke(generator.name);
-        });
-      });
-    }
-  });
+desc('Destroy scaffolded item(s), or list available scaffolds');
+task('destroy', function() {
+  generate = false;
+  return jake.Task['generate'].execute();
 });
 
 function validate(generator, name) {
-  if((generator === 'view' || generator === 'collection-view') && name.dasherize() === 'base') {
+  if((generator === 'view' || generator === 'collectionview') && name.dasherize() === 'base') {
     fail('name parameter cannot be "base"');
   }
+}
+
+function getGenerators() {
+  return fs.readdirSync('generators').filter(function(generator) {
+    return fs.existsSync(path.join('generators', generator, 'generator.json'));
+  });
 }

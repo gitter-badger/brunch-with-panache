@@ -1,6 +1,11 @@
-# Application-specific view helpers
-# http://handlebarsjs.com/#helpers
-# ---------------------------------
+utils = require('./utils')
+
+# Application-specific view helpers (Swag, Lo-Dash mixins, Rivets formatters, etc.)
+# ---------------------------------------------------------------------------
+
+# Register Swag helpers
+# http://elving.github.io/swag/
+Swag.registerHelpers()
 
 # Register custom Handlebars helpers
 register = (name, fn) ->
@@ -11,4 +16,4 @@ register = (name, fn) ->
 
 # Get Chaplin-declared named routes, e.g. {{url "likes#show" "105"}}
 register 'url', (routeName, params..., options) ->
-  Chaplin.helpers.reverse routeName, params
+  utils.reverse routeName, params

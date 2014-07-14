@@ -1,71 +1,97 @@
 // Test-related tasks
-var config = require('../brunch-config').config.overrides['web:dev'];
-var execute = require('./lib').execute;
-var localBinCommand = require('./lib').localBinCommand;
+var fs = require('fs');
 var path = require('path');
 var Promise = require('bluebird');
-var resolvePath = require('./lib').resolvePath;
+var brunch = require('./lib').npmBin('brunch');
+var config = require('../brunch-config').config;
+var karma = require('./lib').npmBin('karma');
+var mocha = require('./lib').npmBin('mocha');
+var npm = require('./lib').bin('npm');
+var nodemon = require('./lib').npmBin('nodemon');
+var phantomjs = require('./lib').npmBin('phantomjs');
 
-var publicPath = resolvePath(config.paths.public);
+// Hide output from PhantomJS
+delete phantomjs.options.stdio;
 
 namespace('test', function() {
+  desc('Install required testing components');
+  task('install', function() {
+    return npm.execute('install',
+      'chai@~1.9.0',
+      'karma@~0.12.17',
+      'karma-chai-plugins@~0.2.0',
+      'karma-coffee-preprocessor@~0.2.1',
+      'karma-detect-browsers@~0.1.2',
+      'karma-mocha@~0.1.1',
+      'karma-phantomjs-launcher@~0.1.4',
+      'mocha@~1.17.1',
+      'mocha-as-promised@~2.0.0',
+      'nodemon@~1.0.14',
+      'phantomjs@~1.9.7',
+      'selenium-webdriver@~2.40.0');
+  });
   desc('Run all tests');
-  task('all', function() {
+  task('all', ['fix:karma'], function() {
     process.env.watch = null;
     return new Promise(function(resolve) {
       console.log('\nCode testing\n------------');
-      process.env.reporter = process.env.codereporter;
+      if(process.env.codereporter) {
+        process.env.reporter = process.env.codereporter;
+      }
       jake.Task['test:code'].addListener('complete', function() {
-        console.log('\nSite testing\n------------')
-        process.env.reporter = process.env.sitereporter;
+        console.log('\nSite testing\n------------');
+        if(process.env.sitereporter) {
+          process.env.reporter = process.env.sitereporter;
+        }
+        else {
+          delete process.env.reporter;
+        }
         jake.Task['test:site'].addListener('complete', resolve).execute();
       }).execute();
     });
   });
 
   desc('Run code-based tests using Karma');
-  task('code', ['bower:install', 'clean:web'], function() {
-    var configFile = resolvePath('test/karma.conf.js');
-    var reporter = process.env.reporter ? ' --reporters ' + process.env.reporter : '';
-    var command = localBinCommand('karma', 'start ' + configFile + reporter);
+  task('code', ['fix:karma', 'bower:install', 'clean:web'], function() {
+    var args = ['start'];
+    var configPath = 'test/karma.conf.coffee';
 
-    // Set browsers options if available
-    if(process.env.browsers) {
-      command += ' --browsers ' + process.env.browsers;
+    // Check for reporter
+    if(process.env.reporter) {
+      args.push('--reporters');
+      args.push(process.env.reporter);
     }
 
     // Default behavior is to run tests once
     if(process.env.watch !== 'true' && process.env.watch !== 'server') {
       return new Promise(function(resolve) {
         jake.Task['build:dev'].addListener('complete', function() {
-          console.log('');
-          resolve(execute(command + ' --single-run'));
-        })
-        .execute();
+          args.push(configPath);
+          args.push('--single-run');
+          resolve(karma.execute(args));
+        }).execute();
       });
     }
     // Also tests can be run continuously
     else {
+      var server;
       if(process.env.watch === 'server') {
-        var server = execute(localBinCommand('brunch', 'w -s -e web:dev'));
+        server = brunch.execute('watch', '--server');
       }
       else {
-        var server = execute(localBinCommand('brunch', 'w -e web:dev'));
+        server = brunch.execute('watch');
       }
       return new Promise(function(resolve, reject) {
         server.catch(reject);
         var id = setInterval(function() {
-          try { // Check if public folder is not empty
-            var publicReady = !!jake.readdirR(publicPath).length
-          }
-          catch(e) {
-          }
-
-          if(typeof publicReady !== 'undefined' && publicReady) {
+          // Check if code is available
+          if(fs.existsSync(path.join(config.paths.public, 'scripts'))) {
             clearInterval(id);
-            execute(command + ' --no-single-run').then(resolve, reject);
+            args.push(configPath);
+            args.push('--no-single-run');
+            karma.execute(args).then(resolve, reject);
           }
-        }, 1000);
+        }, 500);
       })
       .finally(function() {
         if(!server.isFulfilled()) {
@@ -77,34 +103,38 @@ namespace('test', function() {
 
   desc('Run site-based tests using Mocha and WebDriverJS');
   task('site', ['bower:install', 'clean:web'], function() {
-    var phantom = execute(localBinCommand('phantomjs', '--webdriver=4444'));
-    var server = execute(localBinCommand('brunch', 'w -s -e web:prod'));
-    var reporter = process.env.reporter ? '-R ' + process.env.reporter : '';
-    var command = localBinCommand('mocha', reporter);
+    var phantom = phantomjs.execute('--webdriver=4444');
+    var server = brunch.execute('watch', '--server', '--production');
+    var args = [];
 
-    // Set up tests that are to run continuously using nodemon
-    if(process.env.watch === 'true') {
-      var args = '--watch ' + publicPath;
-      args += ' --watch ' + resolvePath('test/site');
-      command = localBinCommand('nodemon', args + ' ' + command);
+    // Check for reporter
+    if(process.env.reporter) {
+      args.push('--reporter');
+      args.push(process.env.reporter);
     }
 
     return new Promise(function(resolve, reject) {
       phantom.catch(reject);
       server.catch(reject);
       var id = setInterval(function() {
-        // Check if public folder is not empty
-        try {
-          var publicReady = !!jake.readdirR(publicPath).length
-        }
-        catch(e) {
-        }
-
-        if(typeof publicReady !== 'undefined' && publicReady) {
+        // Check if code is available
+        if(fs.existsSync(path.join(config.paths.public, 'scripts'))) {
           clearInterval(id);
-          execute(command).then(resolve, reject);
+          if(process.env.watch === 'true') {
+            args.unshift(path.join('node_modules', '.bin', 'mocha'));
+            args.unshift(path.join('test', 'site'));
+            args.unshift('--watch');
+            args.unshift(config.paths.public);
+            args.unshift('--watch');
+            args.unshift('js,coffee');
+            args.unshift('-e');
+            nodemon.execute(args).then(resolve, reject);
+          }
+          else {
+            mocha.execute(args).then(resolve, reject);
+          }
         }
-      }, 1000);
+      }, 500);
     })
     // Make sure to stop server and phantom on success or fail
     .finally(function() {

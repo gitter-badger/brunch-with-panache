@@ -1,7 +1,19 @@
 # Changelog
 
-### WIP
--
+### 0.8.3 (July 14, 2014)
+- Updated from BTC-Chaplin tags/0.8.2; resolves #6
+- Borrowed some additional work from BTC-Chaplin master
+- Fixed issues causing code tests to fail; resolves #13
+- Added Swag for Handlebars by default
+- Reworked JSEnv plugin to work with Coffee and whitelist
+- Ported the Karma config over to coffee
+- Added NPM clean task; resolves #18
+- Added asset fingerprinting for production builds
+- Removed the page view generator
+- Reworked site template and default views; resolves #12, #10, #9, #7, #5
+- Bumped a bunch of packages; resolves #4
+- Added default application title; resolves #8
+- Removed unused NPM scaffolding tool
 
 ### 0.7.9 (May 1, 2014)
 - Added new generators for designer scaffolding and page views

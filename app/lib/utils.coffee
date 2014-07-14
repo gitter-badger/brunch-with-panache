@@ -7,6 +7,7 @@ utils = Chaplin.utils.beget Chaplin.utils
 # Add extend so no need to worry if using Backbone or Exoskeleton
 utils.extend = if _? then _.extend else Backbone.utils.extend
 
+# Set additional props and methods
 # utils.extend utils,
 #   someMethod: ->
 

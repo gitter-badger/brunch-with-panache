@@ -1,18 +1,20 @@
-# Brunch with Panache 0.7.9
-
-[![Dependency Status](https://david-dm.org/trunkclub/brunch-with-panache.png)](https://david-dm.org/trunkclub/brunch-with-panache)
-[![devDependency Status](https://david-dm.org/trunkclub/brunch-with-panache/dev-status.png)](https://david-dm.org/trunkclub/brunch-with-panache#info=devDependencies)
+# Chapless Brunch 0.8.2
+[<img src="https://david-dm.org/jupl/chapless-brunch.png"/>](https://david-dm.org/jupl/chapless-brunch)
+[<img src="https://david-dm.org/jupl/chapless-brunch/dev-status.png"/>](https://david-dm.org/jupl/chapless-brunch#info=devDependencies)
 
 
 ## Introduction
 Brunch with Panache is a skeleton for building web applications, specifically single-page applications. It is a modification of [Chapless Brunch](https://github.com/jupl/chapless-brunch). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](https://github.com/mde/jake), and [PhantomJS](http://phantomjs.org/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
 
-It contains the following differences from Chapless Brunch:
+It contains the following differences from BTC-Chaplin:
 
-- More opionated file naming conventions
 - Sass instead of Less, with expected integration with framework
-- Intended to be used with forthcoming DRY library
-- NPM shrinkwrap task. Lock those dependencies [down](https://twitter.com/jhabdas/status/401084154697117698/photo/1)!
+- Handlebars instead of Embedded CoffeeScript templates
+- Swag helpers included for more powerful Handlebars templates
+- Asset fingerprinting for cache busting (production builds only)
+- More opionated generators for easier file searching
+- Working Karma test runner
+- NPM shrinkwrap task
 
 For a mobile/Cordova friendly variant, check out [this skeleton](https://github.com/trunkclub/brunch-with-panache/tree/cordova).
 
@@ -24,8 +26,8 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
     │   ├── lib                   # Chaplin utilities and helpers
     │   ├── models                # Chaplin models and collections
     │   ├── styles                # Application style rule declarations
-    │   │   ├── _base.scss        # Styles for static framework (80%)
-    │   │   └── application.scss  # Styles for application (20%)
+    │   │   ├── base.scss         # Sass variables and mixins for the application
+    │   │   └── application.scss  # Application/page styling definition
     │   ├── views                 # Chaplin views and collection views
     │   ├── application.coffee    # Chaplin application definition
     │   ├── initialize.coffee     # Chaplin views and collection views
@@ -35,12 +37,12 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
     ├── generators                # Generators used by Scaffolt
     ├── jakelib                   # Unified set of tasks for development
     ├── public                    # Generated final product
-    ├── setup                     # Add configuration options to brunch-config
+    ├── server                    # Server configuration
     ├── test                      # Test-related files
     │   ├── assets                # Static assets to run code tests manually
     │   ├── code                  # Code-based tests for Karma/manual
     │   ├── site                  # Site-based tests for Mocha and WebDriverJS
-    │   ├── karma.conf.js         # Karma configuration for code tests
+    │   ├── karma.conf.coffee     # Karma configuration for code tests
     │   ├── mocha.opts            # Default options for site tests
     │   └── setup.js              # Configuration for site tests
     ├── vendor                    # 3rd party JS/CSS libraries
@@ -50,22 +52,17 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
     └── package.json              # Project dependencies and configuration
 
 
-## Requirements
-- [node.js](http://nodejs.org)
-- [CoffeeScript](http://coffeescript.org/#installation) (required for generators and tests)
-- [Jake](https://github.com/mde/jake#installing-with-npm) (required for development)
-
-
 ## Setup
 
-1. Install node.js and CoffeeScript.
-2. If doing development, install Jake.
-4. Open a terminal window and navigate to the project directory.
-5. Execute the command `npm install` to install all package dependencies.
+1. Install [node.js](http://nodejs.org/), preferably using [nvm](https://github.com/creationix/nvm).
+2. If using Windows and leveraging Bower, install [Git](http://git-scm.com/download/win).
+3. Open a terminal window and navigate to the project directory.
+4. Execute the command `npm install` to install all package dependencies.
+5. Run `jake` for a listing of available application options.
 
 
 ## Notes
-If you want to just run Brunch without using Jake tasks, just use either `web:dev` or `web:prod` for the environment. ex: `brunch watch --server --environment web:prod`
+If you want to just run Brunch without using Jake tasks, just use either `web:dev` or `web:prod` for the environment. (ex: `brunch watch --server --env web:prod`)
 
 One-line commands are provided for convenience as well for those that want to start running things as quickly as possible by installing depedencies automatically. Use `npm start` to download non-development packages and run the `server:prod` task. Use `npm test` to download all packages and run the `test:all` task.
 
@@ -78,40 +75,22 @@ When making a pull request, make sure to edit the base fork to which you want to
 ## Task List
 While Brunch/Scaffolt/etc. can be used, Jake commands are provided for a simple and consistent interface. These tasks can be executed using `jake`. (`jake [task]`) These are the following available tasks provided out of the box:
 
-### Coffeeenv
-A config.coffeenev file is provided in the `app` directory. It allows you to set environment variables for the purposes of local development or deployment.
-
-```CoffeeScript
-  (env) ->
-    data = {}
-
-    # Add environment-specific variables here
-    if (env.ENVIRONMENT == 'STAGING')
-      data.api_url = 'https://staging.trunkclub.com'
-    data.ENERGYLEVELS = env.ENERGYLEVELS
-    data
-```
-
-This allows you to run a command with the environment variable:
-
-`ENVIRONMENT="STAGING" ENERGYLEVELS="9000" jake watch:dev`
-
-And access the variables as a commonjs module:
-
-```CoffeeScript
-config = require('config')
-console.log config.api_url, config.ENERGYLEVELS
-```
-
 ### Bower
 
 #### `bower:install`
 Download and preinstall any Bower dependencies in advance. You can run this if you want to download Bower dependencies in advance.
 
+#### `bower:clean`
+Remove downloaded Bower dependencies. This is useful if you want to reinstall dependencies. (e.g. updated package)
+
+
 ### NPM
 
 #### `npm:shrinkwrap`
-Locks down the versions of a package's dependencies so that you can control exactly which versions of each dependency will be used when your package is installed.
+Locks down Node package versions.
+
+#### `npm:clean`
+Remove downloaded Node dependencies. This is useful if you want to reinstall dependencies. (e.g. updated package)
 
 ### Extras
 These commands add additional features/items to the project that are not included by default.
@@ -133,28 +112,30 @@ Add/remove [Davy](https://github.com/lvivski/davy) to/from the project for simpl
 
 
 ### Scaffolding
-- Unit test files are automatically generated for Chaplin items.
-- For Chaplin views, a template and stylesheet is also provided in addition to the code file.
+Scaffolding commands are available in the form of `gen` and `del`. (syntax ex: `jake gen codetest=user`) Multiple scaffolds can be specified in a single command, as well as separating names with commas. (ex: `jake gen codetest=test1,test2 sitetest=test3`) Unit test files are automatically generated for Chaplin items. For Chaplin views, a template and stylesheet is also provided in addition to the code file.
 
-#### `gen:model name=[name]` / `del:model name=[name]`
+#### `gen` / `del`
+List available scaffolds.
+
+#### `gen model=[name]` / `del model=[name]`
 Generate/destroy a Chaplin model.
 
-#### `gen:collection name=[name]` / `del:collection name=[name]`
+#### `gen collection=[name]` / `del collection=[name]`
 Generate/destroy a Chaplin collection. Generating a Chaplin collection will also generate its corresponding model. Specify the name in singular form, as collection will automatically be pluralized.
 
-#### `gen:view name=[name]` / `del:view name=[name]`
+#### `gen view=[name]` / `del view=[name]`
 Generate/destroy a Chaplin view.
 
-#### `gen:collectionview name=[name]` / `del:collectionview name=[name]`
+#### `gen collection-view=[name]` / `del collection-view=[name]`
 Generate/destroy a Chaplin collection view. Generating a Chaplin collection view will also generate the individual item view.
 
-#### `gen:controller name=[name]` / `del:controller name=[name]`
-Generate/destroy a Chaplin controller.
+#### `gen controller=[name]` / `del controller=[name]`
+Generate/destroy a [Chaplin controller](http://docs.chaplinjs.org/chaplin.controller.html).
 
-#### `gen:codetest name=[name]` / `del:codetest name=[name]`
+#### `gen code-test=[name]` / `del code-test=[name]`
 Generate/destroy a test file with the given test name for testing code. (ex: unit testing)
 
-#### `gen:sitetest name=[name]` / `del:sitetest name=[name]`
+#### `gen site-test=[name]` / `del site-test=[name]`
 Generate/destroy a test file with the given test name for testing the site. (ex: functional testing)
 
 
@@ -200,10 +181,40 @@ Assemble the application and continue to watch for changes. Rebuild every time a
 Assemble the application and continue to watch for changes. Rebuild every time a change is detected. Also, the application is served locally to open with a browser. This build uses the `web` environment.
 
 
+## Coffeeenv
+A `config.coffeeenv` file is provided in the `app/lib` directory. It allows you to set environment variables for the purposes of local development or deployment.
+
+``` coffee
+(env) ->
+
+  # Environment options
+  # https://github.com/rcs/jsenv-brunch/
+  environmentOpts =
+    API_HOST: 'http://api.apihost.com'
+
+  # Set allowed environment options
+  for key, value of env
+    switch key
+      when 'API_HOST' then environmentOpts.API_HOST = value
+
+  environmentOpts
+```
+
+This allows you to run a command with the environment variable:
+
+`API_HOST="http://api.untappd.com" jake watch:dev`
+
+And access passed variables as a CommonJS module at runtime:
+
+``` coffee
+config = require('lib/config')
+console.log config.API_URL # => http://api.untappd.com
+```
+
 ## Libraries
 
 ### Core
-- [Brunch Toolchain](https://github.com/jupl/brunch-toolchain)
+- [Brunch Toolchain](https://github.com/jupl/brunch-toolchain) 0.6.1
 
 ### Languages
 - [CoffeeScript](http://coffeescript.org/)

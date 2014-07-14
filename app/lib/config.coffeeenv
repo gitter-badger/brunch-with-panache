@@ -1,0 +1,13 @@
+(env) ->
+
+  # Environment options
+  # https://github.com/rcs/jsenv-brunch/
+  environmentOpts =
+    API_HOST: 'http://api.tld.com'
+
+  # Set allowed environment options
+  for key, value of env
+    switch key
+      when 'API_HOST' then environmentOpts.API_HOST = value
+
+  environmentOpts

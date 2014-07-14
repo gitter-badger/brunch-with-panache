@@ -1,25 +1,40 @@
-var setup = require('./setup');
+/**
+ * Brunch configuration
+ * http://brunch.io/#documentation for docs
+ */
+exports.config = {
+  paths: {
+    public: 'public'
+  },
 
-exports.config = setup({
+  server: {
+    path: 'server',
+    port: 3333
+  },
+
   files: {
     javascripts: {
       joinTo: {
-        'javascripts/app.js': /^app/,
-        'javascripts/vendor.js': /^(vendor|bower_components)/
+        'scripts/app.js': /^app/,
+        'scripts/vendor.js': /^(vendor|bower_components)/
       }
     },
 
     stylesheets: {
       joinTo: {
-        'stylesheets/app.css': /^(app|vendor|bower_components)/
+        'styles/app.css': /^(app|vendor|bower_components)/
       }
     },
 
     templates: {
-      joinTo: 'javascripts/app.js'
+      joinTo: 'scripts/app.js'
     }
   },
+
   plugins: {
+    autoreload: {
+      enabled: process.env.browsersync !== 'true'
+    },
     coffeelint: {
       pattern: /^app\/.*\.coffee$/,
       options: {
@@ -27,6 +42,9 @@ exports.config = setup({
           level: "ignore"
         }
       }
+    },
+    digest: {
+      environments: ['production']
     }
   }
-});
+};
