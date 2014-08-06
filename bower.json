@@ -18,6 +18,9 @@
     "swag": "~0.6.1"
   },
   "overrides": {
+    "chaplin": {
+      "main": "chaplin.js"
+    },
     "backbone": {
       "dependencies": {
         "lodash": "*",

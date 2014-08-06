@@ -1,5 +1,7 @@
 require('lib/view-helper') # Just load the view helpers, no return value
 
+Chaplin = require('chaplin')
+
 module.exports = class View extends Chaplin.View
   autoRender: yes
 
