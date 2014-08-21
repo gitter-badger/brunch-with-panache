@@ -6,6 +6,6 @@ module.exports = class Controller extends Chaplin.Controller
   # Compositions persist stuff between controllers.
   # You may also persist models etc.
   beforeAction: ->
-    @compose 'site', SiteView
-    @compose 'header', HeaderView, {region: 'header'}
-    @compose 'footer', FooterView, {region: 'footer'}
+    @reuse 'site', SiteView
+    @reuse 'header', HeaderView, {region: 'header'}
+    @reuse 'footer', FooterView, {region: 'footer'}

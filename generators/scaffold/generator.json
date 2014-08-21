@@ -15,7 +15,6 @@
   "dependencies": [
     {"type": "model"},
     {"type": "collection"},
-    {"type": "page-view", "name": "{{name}}"},
     {"type": "collection-view", "name": "{{pluralName}}"}
   ]
 }
