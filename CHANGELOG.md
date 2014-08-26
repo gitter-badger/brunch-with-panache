@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.8.5 (August 21, 2014)
+- Bump Chaplin dep to 1.0.1
+- Fix bug in the scaffold generator
+
+### 0.8.4 (July 14, 2014)
+- Bump to fix a small mistake in the README
+
 ### 0.8.3 (July 14, 2014)
 - Updated from BTC-Chaplin tags/0.8.2; resolves #6
 - Borrowed some additional work from BTC-Chaplin master
