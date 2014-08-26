@@ -26,8 +26,8 @@ module.exports = class Collection extends Chaplin.Collection
       deferreds.push(@fetch fetchOptions)
 
     $.when.apply(@, deferreds)
-      .then(options.success.call(@))
-      .fail(options.error.call(@))
+    .then(options.success.call(@))
+    .fail(options.error.call(@))
 
   _getBatches: (ids, chunkSize) ->
     [].concat.apply [],
