@@ -4,16 +4,17 @@ module.exports = class Collection extends Chaplin.Collection
   # Use the project base model by default
   model: Model
 
-  fetchChunks: (options={}) ->
+  # Fetch data in chunks
+  fetchChunks: (options = {}) ->
     defaultOptions =
       chunkSize: 100
       ids: []
-      success: () ->
-      error: () ->
+      success: -> return # @return no-op unless passed as option
+      error: -> return # @return no-op unless passed as option
 
     defaultFetchOptions =
-      reset: false
-      remove: false
+      reset: no
+      remove: no
 
     options = _.extend defaultOptions, options
 
@@ -25,10 +26,10 @@ module.exports = class Collection extends Chaplin.Collection
       deferreds.push(@fetch fetchOptions)
 
     $.when.apply(@, deferreds)
-    .then(options.success.call(@))
-    .fail(options.error.call(@))
+      .then(options.success.call(@))
+      .fail(options.error.call(@))
 
   _getBatches: (ids, chunkSize) ->
     [].concat.apply [],
-      ids.map (elem, index) ->
+      ids.map (el, index) ->
         (if index % chunkSize then [] else [ids.slice(index, index + chunkSize)])
