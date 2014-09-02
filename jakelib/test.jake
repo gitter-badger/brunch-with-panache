@@ -19,6 +19,7 @@ namespace('test', function() {
     return npm.execute('install',
       'chai@~1.9.0',
       'karma@~0.12.17',
+      'karma-cli@~0.0.4',
       'karma-chai-plugins@~0.2.0',
       'karma-coffee-preprocessor@~0.2.1',
       'karma-detect-browsers@~0.1.2',
@@ -31,7 +32,7 @@ namespace('test', function() {
       'selenium-webdriver@~2.40.0');
   });
   desc('Run all tests');
-  task('all', ['fix:karma'], function() {
+  task('all', function() {
     process.env.watch = null;
     return new Promise(function(resolve) {
       console.log('\nCode testing\n------------');
@@ -52,7 +53,7 @@ namespace('test', function() {
   });
 
   desc('Run code-based tests using Karma');
-  task('code', ['fix:karma', 'bower:install', 'clean:web'], function() {
+  task('code', ['bower:install', 'clean:web'], function() {
     var args = ['start'];
     var configPath = 'test/karma.conf.coffee';
 

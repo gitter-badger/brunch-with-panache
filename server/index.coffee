@@ -1,25 +1,19 @@
-express = require('express')
-http = require('http')
+Hapi = require('hapi')
 path = require('path')
 
 exports.startServer = (port, publicPath, callback) ->
-  app = express()
 
-  # Point to generated static files
-  app.use(express.static(publicPath))
+  # Start server on port specified in brunch-config
+  server = new Hapi.Server port
 
-  # Define web services
-  # app.use(express.json())
-  # app.use(express.urlencoded())
-  # app.use(app.router)
-  # app.post(...)
-
-  # Set other paths to index.html for HTML5 pushState apps
-  indexPath = path.resolve(publicPath, 'index.html')
-  app.get '*', (request, response) ->
-    response.sendfile(indexPath)
+  # Serve static files
+  server.route
+    method: 'GET'
+    path: '/{path*}'
+    handler:
+      directory:
+        path: publicPath
 
   # Start up server
-  server = http.createServer(app)
-  server.listen(port, callback)
-  server
+  server.start ->
+    console.log "Server running at #{server.info.uri}"

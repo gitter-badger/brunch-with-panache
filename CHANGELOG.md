@@ -1,5 +1,13 @@
 # Changelog
 
+### NEXT
+- Removed unnecessary lesshat bower component
+- Added jake tasks for easily adding and removing Swag
+- Bumped Chaplin down to ~1.0.0 for proper Exoskeleton support
+- Added karma-cli as test dependency and removed karma fix jake task
+- Swap out Express for Hapi for happier development (and no cookies)
+- Fix a bug where mocha assets piped to app.css when test stuff installed
+
 ### 0.8.5 (August 21, 2014)
 - Bump Chaplin dep to 1.0.1
 - Fix bug in the scaffold generator

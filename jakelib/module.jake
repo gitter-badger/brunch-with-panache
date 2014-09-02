@@ -1,5 +1,5 @@
 // Tasks to add modules to the project that are not included by default.
-// This is usually either Bower packages or NPM packages.
+// These are usually either Bower components or NPM packages.
 var fs = require('fs');
 
 namespace('add', function() {
@@ -31,6 +31,13 @@ namespace('add', function() {
       this.overrides.rivets = {
         main: 'dist/rivets.js'
       };
+    });
+  });
+
+  desc('Add Swag for a collection of Handlebars view helpers');
+  task('swag', function() {
+    editBower(function() {
+      this.dependencies['swag'] = '~0.6.1';
     });
   });
 
@@ -82,6 +89,13 @@ namespace('rem', function() {
     editBower(function() {
       delete this.dependencies['rivets'];
       delete this.overrides['rivets'];
+    });
+  });
+
+  desc('Remove Swag');
+  task('swag', function() {
+    editBower(function() {
+      delete this.dependencies['swag'];
     });
   });
 
