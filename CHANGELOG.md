@@ -1,6 +1,6 @@
 # Changelog
 
-### NEXT
+### 0.8.6 (September 2, 2014)
 - Removed unnecessary lesshat bower component
 - Added jake tasks for easily adding and removing Swag
 - Bumped Chaplin down to ~1.0.0 for proper Exoskeleton support
