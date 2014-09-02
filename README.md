@@ -233,4 +233,5 @@ console.log config.API_URL # => http://api.untappd.com
 - [jQuery](http://jquery.com/)
 - [Lo-Dash](http://lodash.com/)
 - [Rivets.js](http://rivetsjs.com/)
+- [Swag](http://elving.github.io/swag/)
 - [Davy](https://github.com/lvivski/davy)
