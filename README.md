@@ -104,6 +104,9 @@ Add/remove [Lo-Dash](http://lodash.com/) to/from the project.
 #### `add:rivets` / `rem:rivets`
 Add/remove [Rivets.js](http://rivetsjs.com/) to/from the project for binding models and views. No additional configuration is needed if added. To reference a model from a view with rivets use the `model` object. To access model properties from Rivets by default use `:`. (ex: `model:name` equates to `model.get('name')`)
 
+### `add:swag` / `rem:swag`
+Add/remove [Swag](http://elving.github.io/swag/) helpers for Handlebars templates.
+
 #### `add:exoskeleton` / `rem:exoskeleton`
 Add/remove [Exoskeleton](http://exosjs.com/) to/from the project for a more lightweight Backbone. Note that this removes/restores [classic Backbone](http://backbonejs.org/), jQuery, and Lo-Dash. You can use other tasks to add/remove jQuery and Lo-Dash again.
 
