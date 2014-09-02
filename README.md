@@ -9,11 +9,12 @@ It contains the following differences from BTC-Chaplin:
 
 - Sass instead of Less, with expected integration with framework
 - Handlebars instead of Embedded CoffeeScript templates
-- Swag helpers included for more powerful Handlebars templates
+- Swag helpers available for more powerful Handlebars templates
 - Asset fingerprinting for cache busting (production builds only)
 - More opionated generators for easier file searching
 - Working Karma test runner
 - NPM shrinkwrap task
+- Uses Hapi instead of Express
 
 For a mobile/Cordova friendly variant, check out [this skeleton](https://github.com/trunkclub/brunch-with-panache/tree/cordova).
 

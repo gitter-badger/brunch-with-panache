@@ -3,9 +3,9 @@ utils = require('./utils')
 # Application-specific view helpers (Swag, Lo-Dash mixins, Rivets formatters, etc.)
 # ---------------------------------------------------------------------------
 
-# Register Swag helpers
+# Register Swag helpers, if installed
 # http://elving.github.io/swag/
-Swag.registerHelpers()
+Swag?.registerHelpers()
 
 # Register custom Handlebars helpers
 register = (name, fn) ->

@@ -22,7 +22,7 @@ exports.config = {
 
     stylesheets: {
       joinTo: {
-        'styles/app.css': /^(app|vendor|bower_components)/
+        'styles/app.css': /^(app|vendor|bower_components\/(?!mocha))/
       }
     },
 
