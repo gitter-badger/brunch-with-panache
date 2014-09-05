@@ -1,5 +1,8 @@
 # Changelog
 
+### NEXT
+- Resolve #23, improving collection view generator naming consistency
+
 ### 0.8.6 (September 2, 2014)
 - Removed unnecessary lesshat bower component
 - Added jake tasks for easily adding and removing Swag
