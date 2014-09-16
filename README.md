@@ -8,12 +8,13 @@ Brunch with Panache is a skeleton for building web applications, specifically si
 It contains the following differences from BTC-Chaplin:
 
 - Sass instead of Less, with expected integration with framework
+- Automatic CSS vendor prefixing
 - Handlebars instead of Embedded CoffeeScript templates
 - Swag helpers available for more powerful Handlebars templates
 - Asset fingerprinting for cache busting (production builds only)
 - More opionated generators for easier file searching
 - Working Karma test runner
-- NPM shrinkwrap task
+- NPM shrinkwrap and clean tasks
 - Uses Hapi instead of Express
 
 For a mobile/Cordova friendly variant, check out [this skeleton](https://github.com/trunkclub/brunch-with-panache/tree/cordova).
@@ -31,7 +32,7 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
     │   ├── views                 # Chaplin views and collection views
     │   ├── application.coffee    # Chaplin application definition
     │   ├── initialize.coffee     # Chaplin views and collection views
-    |   ├── config.coffeeenv      # Environment-specific variables
+    │   ├── config.coffeeenv      # Environment-specific variables
     │   └── routes.coffee         # Route definitions for Chaplin
     ├── bower_components          # Packages installed by Bower
     ├── generators                # Generators used by Scaffolt
