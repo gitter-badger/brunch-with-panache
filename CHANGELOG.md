@@ -2,6 +2,8 @@
 
 ### NEXT
 - Resolve #23, improving collection view generator naming consistency
+- Add autoprefixer while we wait for #21
+- Fix bug where Sass partials were ignored by the watcher on save
 
 ### 0.8.6 (September 2, 2014)
 - Removed unnecessary lesshat bower component

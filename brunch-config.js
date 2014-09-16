@@ -19,16 +19,18 @@ exports.config = {
         'scripts/vendor.js': /^(vendor|bower_components)/
       }
     },
-
     stylesheets: {
       joinTo: {
         'styles/app.css': /^(app|vendor|bower_components\/(?!mocha))/
       }
     },
-
     templates: {
       joinTo: 'scripts/app.js'
     }
+  },
+
+  conventions: {
+    ignored: /^_.*\.scss$/
   },
 
   plugins: {
