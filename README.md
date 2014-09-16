@@ -3,7 +3,7 @@
 [![devDependency Status](https://david-dm.org/trunkclub/brunch-with-panache/dev-status.png)](https://david-dm.org/trunkclub/brunch-with-panache#info=devDependencies)
 
 ## Introduction
-Brunch with Panache is a skeleton for building web applications, specifically single-page applications. It is a modification of [Chapless Brunch](https://github.com/jupl/chapless-brunch). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](https://github.com/mde/jake), and [PhantomJS](http://phantomjs.org/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
+Brunch with Panache is a skeleton for building web applications, specifically single-page applications. It is a modification of [BTC-Chaplin](https://github.com/jupl/btc-chaplin). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](https://github.com/mde/jake), and [PhantomJS](http://phantomjs.org/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
 
 It contains the following differences from BTC-Chaplin:
 
