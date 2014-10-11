@@ -1,14 +1,18 @@
-// Bower related tasks
-var bower = require('./lib').npmBin('bower');
+(function() {
+  'use strict';
 
-namespace('bower', function() {
-  desc('Download and install Bower components');
-  task('install', function() {
-    return bower.execute('install', '--allow-root', '--config.interactive=false');
-  });
+  // Bower related tasks
+  var bower = require('./lib').npmBin('bower');
 
-  desc('Clear Bower components');
-  task('clean', function() {
-    jake.rmRf('bower_components');
+  namespace('bower', function() {
+    desc('Download and install Bower components');
+    task('install', function() {
+      return bower.execute('install', '--allow-root', '--config.interactive=false');
+    });
+
+    desc('Clear Bower components');
+    task('clean', function() {
+      jake.rmRf('bower_components');
+    });
   });
-});
+}());
