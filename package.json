@@ -5,7 +5,8 @@
   "author": "Trunk Club",
   "contributors": [
     {"name": "Josh Habdas"},
-    {"name": "Jason Block"}
+    {"name": "Jason Block"},
+    {"name": "Juan Placencia"}
   ],
   "repository": "git",
   "engines": {
