@@ -9,11 +9,3 @@ module.exports = class Application extends Chaplin.Application
 
   constructor: (options) ->
     super utils.extend({}, defaultOptions, options)
-
-  # Create additional mediator properties
-  initMediator: ->
-    # Add additional application-specific properties and methods
-    # e.g. Chaplin.mediator.prop = null
-    Chaplin.mediator.user = null
-    # Seal the mediator
-    super
