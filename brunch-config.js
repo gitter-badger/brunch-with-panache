@@ -1,6 +1,6 @@
 /**
  * Brunch configuration
- * http://brunch.io/#documentation for docs
+ * @see http://brunch.io/#documentation for docs
  */
 exports.config = {
   paths: {
@@ -9,7 +9,7 @@ exports.config = {
 
   server: {
     path: 'server',
-    port: 3333
+    port: 8080
   },
 
   files: {

@@ -3,9 +3,9 @@
 [![devDependency Status](https://david-dm.org/trunkclub/brunch-with-panache/dev-status.png)](https://david-dm.org/trunkclub/brunch-with-panache#info=devDependencies)
 
 ## Introduction
-Brunch with Panache is a skeleton for building web applications, specifically single-page applications. It is a modification of [BTC-Chaplin](https://github.com/jupl/btc-chaplin). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](https://github.com/mde/jake), and [PhantomJS](http://phantomjs.org/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
+BWP is a skeleton for building web applications, specifically single-page applications. It is a modification of [btc-chaplin](https://github.com/jupl/btc-chaplin). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](https://github.com/mde/jake), [PhantomJS](http://phantomjs.org/) and [Karma](http://karma-runner.github.io/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
 
-It contains the following differences from BTC-Chaplin:
+It contains the following differences from its upstream:
 
 - Sass instead of Less, with expected integration with framework
 - Automatic CSS vendor prefixing
@@ -15,7 +15,8 @@ It contains the following differences from BTC-Chaplin:
 - More opionated generators for easier file searching
 - Working Karma test runner
 - NPM shrinkwrap and clean tasks
-- Uses Hapi instead of Express
+- Uses Hapi instead of Express as Node app server
+- Configurable environment options
 
 For a mobile/Cordova friendly variant, check out [this skeleton](https://github.com/trunkclub/brunch-with-panache/tree/cordova).
 
@@ -27,7 +28,7 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
     │   ├── lib                   # Chaplin utilities and helpers
     │   ├── models                # Chaplin models and collections
     │   ├── styles                # Application style rule declarations
-    │   │   ├── base.scss         # Sass variables and mixins for the application
+    │   │   ├── _base.scss        # Sass variables and mixins for the application
     │   │   └── application.scss  # Application/page styling definition
     │   ├── views                 # Chaplin views and collection views
     │   ├── application.coffee    # Chaplin application definition
@@ -55,12 +56,10 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
 
 ## Setup
 
-1. Install [node.js](http://nodejs.org/), preferably using [nvm](https://github.com/creationix/nvm).
-2. If using Windows and leveraging Bower, install [Git](http://git-scm.com/download/win).
+1. Install [node.js](http://nodejs.org/).
 3. Open a terminal window and navigate to the project directory.
 4. Execute the command `npm install` to install all package dependencies.
 5. Run `jake` for a listing of available application options.
-
 
 ## Notes
 If you want to just run Brunch without using Jake tasks, just use either `web:dev` or `web:prod` for the environment. (ex: `brunch watch --server --env web:prod`)
@@ -83,7 +82,6 @@ Download and preinstall any Bower dependencies in advance. You can run this if y
 
 #### `bower:clean`
 Remove downloaded Bower dependencies. This is useful if you want to reinstall dependencies. (e.g. updated package)
-
 
 ### NPM
 
