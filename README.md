@@ -3,20 +3,20 @@
 [![devDependency Status](https://david-dm.org/trunkclub/brunch-with-panache/dev-status.png)](https://david-dm.org/trunkclub/brunch-with-panache#info=devDependencies)
 
 ## Introduction
-BWP is a skeleton for building web applications, specifically single-page applications. It is a modification of [btc-chaplin](https://github.com/jupl/btc-chaplin). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](http://jakejs.com/), [PhantomJS](http://phantomjs.org/) and [Karma](http://karma-runner.github.io/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
+BWP is a skeleton for building web applications, specifically single-page applications. It is a modification of [btc-chaplin](https://github.com/jupl/btc-chaplin). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](http://jakejs.com/), [Hapi](http://hapijs.com/), [PhantomJS](http://phantomjs.org/) and [Karma](http://karma-runner.github.io/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
 
 It contains the following differences from its upstream:
 
-- Sass instead of Less, with expected integration with framework
-- Automatic CSS vendor prefixing
+- Sass instead of Less
+- Automatic vendor prefixing
 - Handlebars instead of Embedded CoffeeScript templates
 - Swag helpers available for more powerful Handlebars templates
-- Asset fingerprinting for cache busting (production builds only)
-- More opionated generators for easier file searching
+- Asset fingerprinting for performance and control
+- Opionated generators for easier file searching
 - Working Karma test runner
 - NPM shrinkwrap and clean tasks
 - Uses Hapi instead of Express as Node app server
-- Configurable environment options
+- Runtime controllable with environment config
 
 For a mobile/Cordova friendly variant, check out [this skeleton](https://github.com/trunkclub/brunch-with-panache/tree/cordova).
 
@@ -57,9 +57,9 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
 ## Setup
 
 1. Install [node.js](http://nodejs.org/).
-3. Open a terminal window and navigate to the project directory.
-4. Execute the command `npm install` to install all package dependencies.
-5. Run `jake` for a listing of available application options.
+2. Open a terminal window and navigate to the project directory.
+3. Execute the command `npm install` to install all package dependencies.
+4. Run `jake` for a listing of available application options.
 
 
 ## Notes
@@ -67,9 +67,7 @@ If you want to just run Brunch without using Jake tasks, just use either `web:de
 
 One-line commands are provided for convenience as well for those that want to start running things as quickly as possible by installing depedencies automatically. Use `npm start` to download non-development packages and run the `server:prod` task. Use `npm test` to download all packages and run the `test:all` task.
 
-
 ## Contribution
-
 When making a pull request, make sure to edit the base fork to which you want to contribute (by default it will try and merge with the parent repository from which this one is forked, which we don't want to do).
 
 ![Example: Pull Request](http://cl.ly/image/3Y0E00370S0e/Screen%20Shot%202013-12-13%20at%203.12.27%20PM.png)
@@ -85,7 +83,6 @@ Download and preinstall any Bower dependencies in advance. You can run this if y
 
 #### `bower:clean`
 Remove downloaded Bower dependencies. This is useful if you want to reinstall dependencies. (e.g. updated package)
-
 
 ### NPM
 
