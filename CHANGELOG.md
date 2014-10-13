@@ -2,6 +2,15 @@
 
 ### NEXT
 - Resolve #23, improving collection view generator naming consistency
+- Add autoprefixer while we wait for #21
+- Fix bug where Sass partials were ignored by the watcher on save
+- Resolve #35 by running server with npm start script
+- Fix #34 by revving deps
+- Resolve #25 by reworking the Scaffold generator
+- Updated LICENSE
+- Prepared package for NPM release, resolves #17
+- Use strict mode for Jake task definitions
+- Fix broken server:dev and server:prod tasks
 
 ### 0.8.6 (September 2, 2014)
 - Removed unnecessary lesshat bower component

@@ -1,18 +1,30 @@
 Hapi = require('hapi')
-path = require('path')
 
 exports.startServer = (port, publicPath, callback) ->
 
   # Start server on port specified in brunch-config
   server = new Hapi.Server port
 
-  # Serve static files
+  # Serve scripts
+  server.route
+    method: 'GET'
+    path: '/scripts/{file*1}'
+    handler:
+      directory: {path: "#{publicPath}/scripts"}
+
+  # Serve styles
+  server.route
+    method: 'GET'
+    path: '/styles/{file*1}'
+    handler:
+      directory: {path: "#{publicPath}/styles"}
+
+  # Catch-all route
   server.route
     method: 'GET'
     path: '/{path*}'
     handler:
-      directory:
-        path: publicPath
+      file: "#{publicPath}/index.html"
 
   # Start up server
   server.start ->

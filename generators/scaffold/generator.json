@@ -13,8 +13,8 @@
     }
   ],
   "dependencies": [
-    {"type": "model"},
     {"type": "collection"},
+    {"type": "view"},
     {"type": "collection-view", "name": "{{pluralName}}"}
   ]
 }

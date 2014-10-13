@@ -1,39 +1,43 @@
-// Brunch build tasks
-var brunch = require('./lib').npmBin('brunch');
+(function() {
+  'use strict';
 
-namespace('build', function() {
-  desc('Build project for development');
-  task('dev', ['bower:install', 'clean:web'], function() {
-    return brunch.execute('build');
+  // Brunch build tasks
+  var brunch = require('./lib').npmBin('brunch');
+
+  namespace('build', function() {
+    desc('Build project for development');
+    task('dev', ['bower:install', 'clean:web'], function() {
+      return brunch.execute('build');
+    });
+
+    desc('Build project for production');
+    task('prod', ['bower:install', 'clean:web'], function() {
+      return brunch.execute('build', '--production');
+    });
   });
 
-  desc('Build project for production');
-  task('prod', ['bower:install', 'clean:web'], function() {
-    return brunch.execute('build', '--production');
-  });
-});
+  namespace('watch', function() {
+    desc('Build project for development and rebuild on changes');
+    task('dev', ['bower:install', 'clean:web'], function() {
+      return brunch.execute('watch');
+    });
 
-namespace('watch', function() {
-  desc('Build project for development and rebuild on changes');
-  task('dev', ['bower:install', 'clean:web'], function() {
-    return brunch.execute('watch');
-  });
-
-  desc('Build project for production and rebuild on changes');
-  task('prod', ['bower:install', 'clean:web'], function() {
-    return brunch.execute('watch', '--production');
-  });
-});
-
-namespace('server', function() {
-  desc('Build project for development, rebuild on changes, and host locally');
-  task('dev', ['bower:install', 'clean:web'], function() {
-    return brunch.execute('watch', '--server');
+    desc('Build project for production and rebuild on changes');
+    task('prod', ['bower:install', 'clean:web'], function() {
+      return brunch.execute('watch', '--production');
+    });
   });
 
-  desc('Build project for production, rebuild on changes, and host locally');
-  task('prod', ['bower:install', 'clean:web'], function() {
-    delete process.env.browsersync;
-    return brunch.execute('watch', '--server', '--production');
+  namespace('server', function() {
+    desc('Build project for development, rebuild on changes and host locally');
+    task('dev', ['build:dev'], function() {
+      return brunch.execute('watch', '--server');
+    });
+
+    desc('Build project for production and host locally');
+    task('prod', ['build:prod'], function() {
+      delete process.env.browsersync;
+      return brunch.execute('watch', '--server', '--production');
+    });
   });
-});
+}());

@@ -1,2 +1,2 @@
-  match '{{pluralName}}', '{{pluralName}}#index', name: '{{pluralName}}'
-  match '{{pluralName}}/:id', '{{pluralName}}#show', name: '{{name}}', constraints: {id: /^\d+$/}
+  match '{{pluralName}}', '{{name}}#index'
+  match '{{pluralName}}/:id', '{{name}}#show', constraints: {id: /^\d+$/}

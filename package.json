@@ -1,33 +1,64 @@
 {
+  "name": "brunch-with-panache",
+  "version": "0.8.6",
+  "description": "Skeleton for building single-page apps with Brunch.",
+  "author": "Trunk Club",
+  "contributors": [
+    {"name": "Josh Habdas"},
+    {"name": "Jason Block"},
+    {"name": "Juan Placencia"},
+    {"name": "Paul Miller"}
+  ],
   "repository": "git",
-  "scripts": {
-    "start": "npm install --production && jake build:prod",
-    "test": "npm install && jake test:install && jake test:all"
+  "engines": {
+    "node": "v0.10.x"
   },
+  "scripts": {
+    "test": "npm install && jake test:install && jake test:all",
+    "start": "npm install --production && jake server:prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trunkclub/brunch-with-panache"
+  },
+  "bugs": {
+    "url" : "http://github.com/trunkclub/brunch-with-panache/issues"
+  , "email" : "ui@trunkclub.com"
+  },
+  "keywords": [
+    "single-page app",
+    "rich internet application",
+    "HTML5",
+    "skeleton",
+    "seed",
+    "trunkclub"
+  ],
   "dependencies": {
-    "bluebird": "~1.1.0",
+    "bluebird": "~2.3.5",
     "bower": "~1.3.8",
-    "brunch": "~1.7.8",
-    "coffee-script": "~1.6.3",
-    "hapi": "~6.7.1",
-    "jake": "~0.7.2",
-    "jsonfile": "~1.1.0",
-    "scaffolt": "~0.4.2",
+    "brunch": "1.7.14",
+    "coffee-script": "~1.8.0",
+    "hapi": "~7.0.0",
+    "jake": "~8.0.10",
+    "jsonfile": "~2.0.0",
+    "scaffolt": "~0.5.0",
     "sugar": "~1.4.1",
 
-    "clean-css-brunch": ">= 1.0 < 1.8",
-    "coffeelint-brunch": ">= 1.0 < 1.8",
-    "coffee-script-brunch": ">= 1.0 < 1.8",
-    "css-brunch": ">= 1.0 < 1.8",
-    "digest-brunch": ">= 1.0 < 1.8",
-    "handlebars-brunch": ">= 1.0 < 1.8",
-    "javascript-brunch": ">= 1.0 < 1.8",
-    "jsenv-brunch": ">= 1.0 < 1.8",
-    "sass-brunch": ">= 1.0 < 1.8",
-    "uglify-js-brunch": ">= 1.0 < 1.8"
+    "clean-css-brunch": ">=1.0 <1.8",
+    "coffeelint-brunch": ">=1.0 <1.8",
+    "coffee-script-brunch": "~1.8.1",
+    "css-brunch": ">=1.0 <1.8",
+    "digest-brunch": ">=1.0 <1.8",
+    "handlebars-brunch": ">=1.0 <1.8",
+    "javascript-brunch": ">=1.0 <1.8",
+    "jsenv-brunch": ">=1.0 <1.8",
+    "sass-brunch": "~1.8.5",
+    "uglify-js-brunch": ">=1.0 <1.8",
+    "autoprefixer-brunch": ">=1.0 <1.8"
   },
   "devDependencies": {
-    "auto-reload-brunch": ">= 1.0 < 1.8",
-    "browser-sync": "~0.7.0"
-  }
+    "auto-reload-brunch": ">=1.0 <1.8",
+    "browser-sync": "~1.5.0"
+  },
+  "license": "MIT"
 }
