@@ -30,7 +30,7 @@ exports.config = {
   },
 
   conventions: {
-    ignored: /^_.*\.scss$/
+    ignored: /^_.*\.scss|_.*\.sass$/
   },
 
   plugins: {
