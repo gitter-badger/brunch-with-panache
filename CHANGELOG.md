@@ -6,7 +6,7 @@
 - Fix bug where Sass partials were ignored by the watcher on save
 - Resolve #35 by running server with npm start script
 - Fix #34 by revving deps
-- Resolve #35 by reworking the Scaffold generator
+- Resolve #25 by reworking the Scaffold generator
 - Updated LICENSE
 - Prepared package for NPM release, resolves #17
 - Use strict mode for Jake task definitions
