@@ -12,7 +12,7 @@ It contains the following differences from its upstream:
 - Handlebars instead of Embedded CoffeeScript templates
 - Swag helpers available for more powerful Handlebars templates
 - Asset fingerprinting for performance and control
-- Opionated generators for easier file searching
+- Opinionated generators for easier file searching
 - Working Karma test runner
 - NPM shrinkwrap and clean tasks
 - Uses Hapi instead of Express as Node app server
