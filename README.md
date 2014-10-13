@@ -232,6 +232,7 @@ console.log config.API_URL # => http://api.untappd.com
 - [Chaplin](chaplinjs.org)
 - [Backbone](backbonejs.org)
 - [Exoskeleton](exosjs.com/)
+- [Hapi](http://hapijs.com/)
 
 ### Testing Framework
 - [Browser Sync](browsersync.io)
