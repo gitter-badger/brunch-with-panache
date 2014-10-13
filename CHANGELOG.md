@@ -1,6 +1,9 @@
 # Changelog
 
 ### NEXT
+-
+
+### 0.9.0 (October 13, 2014)
 - Resolve #23, improving collection view generator naming consistency
 - Add autoprefixer while we wait for #21
 - Fix bug where Sass partials were ignored by the watcher on save
