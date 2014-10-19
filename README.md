@@ -3,7 +3,7 @@
 [![devDependency Status](https://david-dm.org/trunkclub/brunch-with-panache/dev-status.png)](https://david-dm.org/trunkclub/brunch-with-panache#info=devDependencies)
 
 ## Introduction
-BWP is a skeleton for building web applications, specifically single-page applications. It is a modification of [btc-chaplin](https://github.com/jupl/btc-chaplin). This skeleton leverages [node](http://nodejs.org), [Brunch](http://brunch.io), [Scaffolt](https://github.com/paulmillr/scaffolt), [Bower](http://bower.io/), [Jake](http://jakejs.com/), [Hapi](http://hapijs.com/), [PhantomJS](http://phantomjs.org/) and [Karma](http://karma-runner.github.io/) to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
+BWP is a skeleton for building web applications, specifically single-page applications. It is a modification of btc-chaplin. It leverages node, Brunch, Scaffolt, Bower, Hapi, PhantomJS, Karma, and Jake to provide cross-platform tasks in a simple package. [EditorConfig](http://editorconfig.org/) is also provided to help with consistency.
 
 It contains the following differences from its upstream:
 
