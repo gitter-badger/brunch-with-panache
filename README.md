@@ -32,7 +32,7 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
     │   │   └── application.scss  # Application/page styling definition
     │   ├── views                 # Chaplin views and collection views
     │   ├── application.coffee    # Chaplin application definition
-    │   ├── initialize.coffee     # Chaplin views and collection views
+    │   ├── initialize.coffee     # Application initialization and script loaders
     │   ├── config.coffeeenv      # Environment-specific variables
     │   └── routes.coffee         # Route definitions for Chaplin
     ├── bower_components          # Packages installed by Bower
