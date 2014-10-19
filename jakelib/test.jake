@@ -8,7 +8,6 @@
   var fs = require('fs');
   var path = require('path');
   var Promise = require('bluebird');
-  var coffee = require('./lib').npmBin('coffee-script-brunch');
   var brunch = require('./lib').npmBin('brunch');
   var config = require('../brunch-config').config; // CoffeeScript
   var karma = require('./lib').npmBin('karma');
