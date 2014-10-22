@@ -1,12 +1,15 @@
 (function() {
   'use strict';
 
+  // Register CoffeeScript for require support in v1.7.0+
+  require('coffee-script/register');
+
   // Test-related tasks
   var fs = require('fs');
   var path = require('path');
   var Promise = require('bluebird');
   var brunch = require('./lib').npmBin('brunch');
-  var config = require('../brunch-config').config;
+  var config = require('../brunch-config').config; // CoffeeScript
   var karma = require('./lib').npmBin('karma');
   var mocha = require('./lib').npmBin('mocha');
   var npm = require('./lib').bin('npm');
