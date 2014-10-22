@@ -12,7 +12,7 @@
     },
     {
       "from": "test.coffee.hbs",
-      "to": "test/code/views/{{name}}.coffee"
+      "to": "test/code/views/{{name}}-view.coffee"
     }
   ],
   "dependencies": []
