@@ -224,28 +224,28 @@ console.log config.API_URL # => http://api.untappd.com
 - [Brunch Toolchain](https://github.com/jupl/brunch-toolchain) 0.6.1 customized
 
 ### Languages
-- [CoffeeScript](coffeescript.org/)
-- [Sass](sass-lang.com)
-- [Handlebars](handlebarsjs.com)
+- [CoffeeScript](http://coffeescript.org/)
+- [Sass](http://sass-lang.com)
+- [Handlebars](http://handlebarsjs.com)
 
 ### Framework
-- [Chaplin](chaplinjs.org)
-- [Backbone](backbonejs.org)
-- [Exoskeleton](exosjs.com/)
+- [Chaplin](http://chaplinjs.org)
+- [Backbone](http://backbonejs.org)
+- [Exoskeleton](http://exosjs.com/)
 - [Hapi](http://hapijs.com/)
 
 ### Testing Framework
-- [Browser Sync](browsersync.io)
-- [PhantomJS](phantomjs.org)
-- [Karma](karma-runner.github.io)
-- [Selenium WebDriver](docs.seleniumhq.org/projects/webdriver/)
-- [Mocha](visionmedia.github.io/mocha/)
-- [Sinon](sinonjs.org)
-- [Chai](chaijs.com)
+- [Browser Sync](http://browsersync.io)
+- [PhantomJS](http://phantomjs.org)
+- [Karma](http://karma-runner.github.io)
+- [Selenium WebDriver](http://docs.seleniumhq.org/projects/webdriver/)
+- [Mocha](http://visionmedia.github.io/mocha/)
+- [Sinon](http://sinonjs.org)
+- [Chai](http://chaijs.com)
 
 ### Utilities
-- [jQuery](jquery.com)
-- [Lo-Dash](lodash.com)
-- [Rivets.js](rivetsjs.com)
-- [Swag](elving.github.io/swag)
-- [Davy](github.com/lvivski/davy)
+- [jQuery](http://jquery.com)
+- [Lo-Dash](http://lodash.com)
+- [Rivets.js](http://rivetsjs.com)
+- [Swag](http://elving.github.io/swag)
+- [Davy](http://github.com/lvivski/davy)
