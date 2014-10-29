@@ -189,7 +189,7 @@ Assemble the application and continue to watch for changes. Rebuild every time a
 
 
 ## Coffeeenv
-A `config.coffeeenv` file is provided in the `app/lib` directory. It allows you to set environment variables for the purposes of local development or deployment.
+A `config.coffeeenv` file is provided in the `app` directory. It allows you to set environment variables for the purposes of local development or deployment.
 
 ``` coffee
 (env) ->
