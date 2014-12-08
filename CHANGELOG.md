@@ -1,7 +1,8 @@
 # Changelog
 
 ### NEXT
--
+- README updates courtesy of @ppiekarczyk
+- Fix a DOM attachment bug in the scaffold generator's controller
 
 ### 0.9.0 (October 13, 2014)
 - Resolve #23, improving collection view generator naming consistency

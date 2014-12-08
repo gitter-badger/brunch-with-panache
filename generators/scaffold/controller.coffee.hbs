@@ -7,10 +7,10 @@ Controller = require('controllers/base/controller')
 module.exports = class {{#camelize}}{{name}}{{/camelize}}Controller extends Controller
   index: ->
     @collection = new {{#camelize}}{{pluralName}}{{/camelize}}
-    @view = new {{#camelize}}{{name}}{{/camelize}}CollectionView {@collection}
+    @view = new {{#camelize}}{{name}}{{/camelize}}CollectionView {@collection, region: 'main'}
     @collection.fetch().then @view.render
 
   show: (params) ->
     @model = new {{#camelize}}{{name}}{{/camelize}} {id: params.id}
-    @view = new {{#camelize}}{{name}}{{/camelize}}View {@model}
+    @view = new {{#camelize}}{{name}}{{/camelize}}View {@model, region: 'main'}
     @model.fetch().then @view.render
