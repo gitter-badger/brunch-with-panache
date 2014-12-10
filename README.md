@@ -61,7 +61,7 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
 3. Execute the command `npm install` to install all package dependencies.
 4. Run `jake server:dev`* to download Bower dependencies and start the server.
 
-* If the `jake` command is not available in path, execute `npm install -g jake` to install it globally.
+If the `jake` command is not available in path, execute `npm install -g jake` to install it globally.
 
 
 ## Notes
