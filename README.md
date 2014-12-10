@@ -57,7 +57,7 @@ For a mobile/Cordova friendly variant, check out [this skeleton](https://github.
 ## Setup
 
 1. Install [Node.js](http://nodejs.org/). Consider using [NVM](https://github.com/creationix/nvm) to do this.
-2. Clone repo, open a terminal window and navigate to the project directory.
+2. Open a terminal window, clone the repo and navigate to the project directory.
 3. Execute the command `npm install` to install all package dependencies.
 4. Run `jake server:dev`* to download Bower dependencies and start the server.
 
