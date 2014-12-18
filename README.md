@@ -1,4 +1,6 @@
 # Brunch with Panache 0.9.0
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/trunkclub/brunch-with-panache?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Dependency Status](https://david-dm.org/trunkclub/brunch-with-panache.png)](https://david-dm.org/trunkclub/brunch-with-panache)
 [![devDependency Status](https://david-dm.org/trunkclub/brunch-with-panache/dev-status.png)](https://david-dm.org/trunkclub/brunch-with-panache#info=devDependencies)
 
